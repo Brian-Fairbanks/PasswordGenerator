@@ -4,7 +4,44 @@ var generateBtn = document.querySelector("#generate");
 
 // Generate Password Function
 function generatePassword(len, lc, uc, num, spec){
-  pass = ""+len+lc+uc+num+spec;
+  pass = "";
+  // create array of valid characters
+  //String.fromCharCode();
+  validChars = [];
+
+  //add lowercase?
+  if(lc){
+    for(var i =97; i<122; i++){
+      validChars.push( String.fromCharCode(i) );
+    }
+  }
+  //add uppercase?
+  if(uc){
+    for(var i =65; i<91; i++){
+      validChars.push( String.fromCharCode(i) );
+    }
+  }
+  //add numbers?
+  if(num){
+    for(var i =32; i<48; i++){
+      validChars.push(i);
+    }
+  }
+  //add lowercase?
+  if(spec){
+    var specials = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+    for(var i =0; i<specials.length; i++){
+      validChars.push( specials[i]);
+    }
+  }
+
+  //Generate passwrod at length provided
+  for(var i=0; i<len; i++){
+    charNum=Math.floor(Math.random()*validChars.length)
+    pass+=validChars[charNum];
+  }
+
+  // return password
   return pass;
 }
 
@@ -27,7 +64,9 @@ function writePassword() {
   // THEN I choose a length of at least 8 characters and no more than 128 characters
   do{
     passLength = prompt("How long to make the password? 8-128")
-  }while(isNaN(passLength) || passLength < 8 || passLength > 128)
+  }
+  while(isNaN(passLength) || passLength < 8 || passLength > 128)
+
   // WHEN prompted for character types to include in the password
   // THEN I choose lowercase, uppercase, numeric, and/or special characters
   while(!includeLower && !includeUpper && !includeNum && !includeSpecial){
