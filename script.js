@@ -4,7 +4,8 @@ var generateBtn = document.querySelector("#generate");
 
 // Generate Password Function
 function generatePassword(len, lc, uc, num, spec){
-  return ""+len+lc_uc+num+spec
+  pass = ""+len+lc+uc+num+spec;
+  return pass;
 }
 
 // Write password to the #password input
