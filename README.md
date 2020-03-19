@@ -1,9 +1,5 @@
 # 03 JavaScript: Password Generator
 
-Create an application that generates a random password based on user-selected criteria. This app will run in the browser and feature dynamically updated HTML and CSS powered by your JavaScript code. It will also feature a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
-
-If you are unfamiliar with special characters, take a look at [some examples](https://www.owasp.org/index.php/Password_special_characters).
-
 ## User Story
 
 ```
@@ -12,44 +8,31 @@ I WANT to randomly generate a password that meets certain criteria
 SO THAT I can create a strong password that provides greater security
 ```
 
-## Acceptance Criteria
+## Overall Flow
+    Starting with clicking on the button --
+    I prompt the user for a series of inputs:
+        *length of password
+            *this input is then error checked to verify that it is actually a number, and that the number falls between 8 and 128 characters
+        *if they want to use upercase characters
+        *if they want to use lowercase characters
+        *if they want to use numeric characters
+        *if they want to use special characters
+            * Special characters pulled from [owasp](https://www.owasp.org/index.php/Password_special_characters).
+            * if none of these are selected, it will alert the user and ask each one again
+        
+    Based on each accepted character set, I then push each character from ascii conversion into a valid character list : ValidChars
+    using this list, I then create a password by choosing a random charcter for for each of the requested length.
+            
+##Functions
+    *function writePassword()
+        **takes no inputs
+        **prompts user for all required vairables
+        ** calls generatepassword
+        **prints password to html
 
-```
-GIVEN I need a new, secure password:
+    *function generatePassword(len, lc, uc, num, spec){
+        **takes inputs for : Int passwordLength, Bool userLowercase, Bool useUppercase, Bool useNumeric, Bool useSpecial
+        **generates a password of length passwordLength, and returns password
 
-WHEN I click the button to generate a password
-THEN I am presented with a series of prompts for password criteria
-
-WHEN prompted for password criteria
-THEN I select which criteria to include in the password
-
-WHEN prompted for the length of the password
-THEN I choose a length of at least 8 characters and no more than 128 characters
-
-WHEN prompted for character types to include in the password
-THEN I choose lowercase, uppercase, numeric, and/or special characters
-
-WHEN I answer each prompt
-THEN my input should be validated and at least one character type should be selected
-
-WHEN all prompts are answered
-THEN a password is generated that matches the selected criteria
-
-WHEN the password is generated
-THEN the password is either displayed in an alert or written to the page
-```
-
-The following image demonstrates the application functionality:
-
-![password generator demo](./Assets/03-javascript-homework-demo.png)
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
-
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+    *generateBtn.addEventListener("click", writePassword);
+        ** event listener on buttom - Calls writePassword
