@@ -6,29 +6,32 @@ var generateBtn = document.querySelector("#generate");
 function generatePassword(len, lc, uc, num, spec){
   pass = "";
   // create array of valid characters
-  //String.fromCharCode();
   validChars = [];
 
   //add lowercase?
   if(lc){
+    // push all ascii values from 97-121 onto valid char list
     for(var i =97; i<122; i++){
       validChars.push( String.fromCharCode(i) );
     }
   }
   //add uppercase?
   if(uc){
+        // push all ascii values from 65-91 onto valid char list
     for(var i =65; i<91; i++){
       validChars.push( String.fromCharCode(i) );
     }
   }
   //add numbers?
   if(num){
-    for(var i =32; i<48; i++){
+        // push nums 0-9 onto valid char list
+    for(var i =0; i<=9; i++){
       validChars.push(i);
     }
   }
   //add lowercase?
   if(spec){
+    // push the following list of commonly accepted special characters onto valid char list
     var specials = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
     for(var i =0; i<specials.length; i++){
       validChars.push( specials[i]);
@@ -37,6 +40,7 @@ function generatePassword(len, lc, uc, num, spec){
 
   //Generate passwrod at length provided
   for(var i=0; i<len; i++){
+    // append a random character from the valid char list to the password string
     charNum=Math.floor(Math.random()*validChars.length)
     pass+=validChars[charNum];
   }
