@@ -37,3 +37,6 @@ using this list, I then create a password by choosing a random charcter for for 
 
 * generateBtn.addEventListener("click", writePassword);
     * event listener on buttom - Calls writePassword
+## Screenshots
+![Popup](https://github.com/Brian-Fairbanks/PasswordGenerator/blob/master/Assets/popup.PNG?raw=true)
+![Result](https://github.com/Brian-Fairbanks/PasswordGenerator/blob/master/Assets/result.PNG?raw=true)
