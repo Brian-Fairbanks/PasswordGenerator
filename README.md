@@ -1,4 +1,5 @@
 # 03 JavaScript: Password Generator
+Thia project was made to work on my ability to code in javascript.
 
 ## User Story
 
